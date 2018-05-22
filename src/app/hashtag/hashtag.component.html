@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="shadow-none p-3 mb-5 bg-light">
+  <div class="ml-3 mb-5">
+    <span class="bg-light">Hashtag search</span>
+    <div class="input-group w-25 mt-2">
+      <input type="search" class="form-control" placeholder="Search By Hashtag" [(ngModel)]="hashtag">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" (click)="getTweetsByHashtag(hashtag)"><i class="fa fa-search"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="bg-white m-3 p-4">
+    <table class=" table">
+      <tr>
+        <th>Tweets</th>
+        <th>Likes</th>
+        <th>Retweets</th>
+        <th>Replies</th>
+        <th>Hashtags</th>
+        <th>Date</th>
+      </tr>
+      <tr *ngFor="let hash of pagedHashtags">
+        <td class="w-25 pr-5">{{getShortText(hash.text)}}</td>
+        <td class="number">{{hash.likes?hash.likes:'-'}}</td>
+        <td class="number">{{hash.retweets?hash.retweets:'-'}}</td>
+        <td class="number">{{hash.replies?hash.replies:'-'}}</td>
+        <td>{{getHashtags(hash.hashtags)}}</td>
+        <td>{{convertDate(hash.date)}}</td>
+      </tr>
+    </table>
+    <form>
+      <div class="form-group">
+        <ul class="pagination">
+          <li class="m-2 page-item"><a class="page-link" [ngClass]="{disabled: pager.currentPage === 1}" (click)="setPage(1)"> 1 </a></li>
+          <li class="m-2 page-item"><a class="page-link" [ngClass]="{disabled: pager.currentPage === 2}" (click)="setPage(2)"> 2 </a></li>
+          <li class="m-2 page-item"><a class="page-link" [ngClass]="{disabled: pager.currentPage === pager.totalPages}" (click)="setPage(pager.currentPage + 1)"> > </a></li>
+        </ul>
+      </div>
+    </form>
+  </div>
+</div>
