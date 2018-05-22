@@ -10,24 +10,27 @@
     </div>
   </div>
   <div class="bg-white m-3 p-4">
-  <table class="table">
-    <tr>
-      <th>Tweet</th>
-      <th>Likes</th>
-      <th>Replies</th>
-      <th>Retweets</th>
-      <th>Hashtags</th>
-      <th>Date</th>
-    </tr>
-    <tr *ngFor="let tweet of pagedTweets">
-      <td class="w-25 pr-5">{{getShortText(tweet.text)}}</td>
-      <td class="number">{{tweet.likes?tweet.likes:'-'}}</td>
-      <td class="number">{{tweet.replies?tweet.replies:'-'}}</td>
-      <td class="number">{{tweet.retweets?tweet.retweets:'-'}}</td>
-      <td>{{getHashtags(tweet.hashtags)}}</td>
-      <td>{{convertDate(tweet.date)}}</td>
-    </tr>
-  </table>
+    <div class="loader">
+      <div [ngClass]="{'loading': pagedTweets.length === 0}"></div>
+    </div>
+    <table class="table">
+      <tr>
+        <th>Tweet</th>
+        <th>Likes</th>
+        <th>Replies</th>
+        <th>Retweets</th>
+        <th>Hashtags</th>
+        <th>Date</th>
+      </tr>
+      <tr *ngFor="let tweet of pagedTweets">
+        <td class="w-25 pr-5">{{getShortText(tweet.text)}}</td>
+        <td class="number">{{tweet.likes?tweet.likes:'-'}}</td>
+        <td class="number">{{tweet.replies?tweet.replies:'-'}}</td>
+        <td class="number">{{tweet.retweets?tweet.retweets:'-'}}</td>
+        <td>{{getHashtags(tweet.hashtags)}}</td>
+        <td>{{convertDate(tweet.date)}}</td>
+      </tr>
+    </table>
     <form>
       <div class="form-group">
         <ul class="pagination">

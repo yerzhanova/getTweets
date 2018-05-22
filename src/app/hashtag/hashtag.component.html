@@ -10,7 +10,10 @@
     </div>
   </div>
   <div class="bg-white m-3 p-4">
-    <table class=" table">
+    <div class="loader">
+      <div [ngClass]="{'loading': pagedHashtags.length === 0}"></div>
+    </div>
+    <table class="table">
       <tr>
         <th>Tweets</th>
         <th>Likes</th>
