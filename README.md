@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 # Connect to api
 
-Url of API specified in /src/app/get-tweet.service.ts
+Url of API specified in /src/app/get-tweet.service.ts. You can also specify variables page_limit and wait in components Hashtag and User.
 
 ## Development server
 
